@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 // const mongoose = require("mongoose");
-// Mongo DB Connection
-
-
-
 
   const cubeSchema = new mongoose.Schema({
     name: { 
@@ -14,20 +10,21 @@ const mongoose = require("mongoose");
         type: String,
         required: true,
     },
-    ImageURL: { 
+    image_URL: { 
         type: String,
         required: true
     },
-    difficultyLevel: {
+    level: {
         type: Number,
         required: true
     },
     accessories: {
-        objectId: this.id,
+        // objectId: Schema.Types.ObjectId,
     }
 
   });
 
+  const Cube = mongoose.model('Cube', cubeSchema);
 // const mongoose = require('mongoose');
 // const Schema = mongoose.Schema;
 // const Accessory = require('./accessory');
@@ -44,4 +41,4 @@ const mongoose = require("mongoose");
 
 // const Cube = mongoose.model('Cube', cubeSchema);
 
-// module.exports = Cube;
+module.exports = Cube;

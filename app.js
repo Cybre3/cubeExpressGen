@@ -44,11 +44,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+// mongoDB connection
 mongoose
     .connect(
-      "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/cubeWorkshop.Cubes?retryWrites=true&w=majority",
+      "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/cubeWorkshop?retryWrites=true&w=majority",
       {
-        dbName: "example",
+        dbName: "cubeWorkshop",
         user: "atlasAdmin",
         pass: "abcde12345",
         useNewUrlParser: true,
