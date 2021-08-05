@@ -14,7 +14,7 @@ router
       name: body.name,
       description: body.description,
       image_URL: body.imageUrl,
-      level: body.difficultyLevel,
+      level: body.difficultyLevel
     });
 
     // console.log(newCube);

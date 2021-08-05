@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const mongoose = require("mongoose");
+const Accessory = require('./Accessory');
 
   const cubeSchema = new mongoose.Schema({
     name: { 
@@ -19,7 +19,8 @@ const mongoose = require("mongoose");
         required: true
     },
     accessories: {
-        // objectId: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
+        ref: 'Accessory'
     }
 
   });

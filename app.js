@@ -27,6 +27,8 @@ app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/create', createRouter);
 app.use('/details/:id', detailsRouter);
+app.use('/create/accessory', detailsRouter);
+app.use('/attach/accessory/:id', detailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
