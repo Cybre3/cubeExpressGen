@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const mongoose = require("mongoose");
+const Cube = require('./Cube');
 
   const cubeSchema = new mongoose.Schema({
     name: { 
@@ -14,6 +14,9 @@ const mongoose = require("mongoose");
         type: String,
         required: true
     },
-    id: thi.id
+    cubes: {
+      objectId: mongoose.Types.ObjectId,
+      ref: Cube
+    }
 
   });
