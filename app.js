@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
@@ -42,5 +43,25 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose
+    .connect(
+      "mongodb+srv://atlasAdmin:abcde12345@cluster0.g2ipk.mongodb.net/cubeWorkshop.Cubes?retryWrites=true&w=majority",
+      {
+        dbName: "example",
+        user: "atlasAdmin",
+        pass: "abcde12345",
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+    .then((res) => console.log("db connected"))
+    .catch((err) => console.log(err));
+
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "connection error:"));
+  db.once("open", function () {
+    console.log("Testing Mongoose db.once method");
+  });
 
 module.exports = app;
