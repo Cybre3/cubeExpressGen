@@ -10,16 +10,17 @@
   <body>
     <div class="container">
       {{> header}}
+
       <main>
       {{> searchForm}}
 
-        
-      {{> cubeDiv}}
-        
+      {{#each cube}}
+        {{> cubeDiv}}
+      {{/each}}        
       </main>
 
+      {{> footer}}
     </div>
-    {{> footer}}
   </body>
 
 </html>

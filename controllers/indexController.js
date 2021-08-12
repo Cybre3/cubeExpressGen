@@ -1,6 +1,5 @@
 // const { partials } = require("handlebars");
 const Cube = require("../models/Cube");
-const expHbs = require('express-handlebars')
 
 module.exports = indexRouter = function (req, res, next) {
   Cube.find(function (err, cubes) {
