@@ -18,10 +18,10 @@ const Accessory = require('./Accessory');
         type: Number,
         required: true
     },
-    accessories: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Accessory'
-    }
+    // accessories: {
+    //     type: mongoose.Types.ObjectId,
+    //     ref: 'Accessory'
+    // }
 
   });
 

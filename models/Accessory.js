@@ -14,9 +14,9 @@ const Cube = require('./Cube');
         type: String,
         required: true
     },
-    cubes: {
-      objectId: mongoose.Types.ObjectId,
-      ref: Cube
-    }
+    // cubes: {
+    //   objectId: mongoose.Types.ObjectId,
+    //   ref: Cube
+    // }
 
   });
