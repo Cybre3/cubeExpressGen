@@ -4,6 +4,7 @@ const Accessory = require('./Accessory');
   const cubeSchema = new mongoose.Schema({
     name: { 
         type: String, 
+        min: 5,
         required: true 
     },
     description: { 
@@ -18,10 +19,10 @@ const Accessory = require('./Accessory');
         type: Number,
         required: true
     },
-    // accessories: {
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'Accessory'
-    // }
+    accessories: {
+        type: Number,
+        ref: 'Accessory'
+    }
 
   });
 
