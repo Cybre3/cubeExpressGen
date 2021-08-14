@@ -9,7 +9,7 @@ module.exports = detailsRouter = function (req, res, next) {
     .lean()
     .then((data) => {
       console.log(data, id);
-      res.render("details", { cube: data });
+      res.render("updatedDetailsPage", { cube: data });
     })
     .catch((err) => console.log(err));
 };
