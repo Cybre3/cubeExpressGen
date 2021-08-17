@@ -1,19 +1,11 @@
-var express = require('express');
-const Accessory = require('../models/Accessory');
+var express = require("express");
 var router = express.Router();
+const attachAccFormRouter = require('../controllers/attachAccController').attachAccFormRouter;
+const attachAcc2Cube = require('../controllers/attachAccController').attachAcc2Cube;
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-
-  Accessory.find(function (err, accessories) {
-    if (err) return console.error(err);
-  })
-    .lean()
-    .then((data) => {
-      console.log(data);
-      res.render("attachAccessory", { accessory: data });
-    })
-    .catch((err) => res.send(err));
-});
+router
+  .get("/:id", attachAccFormRouter)
+  .post("/:id", attachAcc2Cube);
 
 module.exports = router;

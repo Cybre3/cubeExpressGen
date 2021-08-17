@@ -14,10 +14,10 @@ const Cube = require('./Cube');
         type: String,
         required: true
     },
-    cube: {
-      type: Number,
+    cube: [{
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'Cube'
-    }
+    }]
 
   });
 
