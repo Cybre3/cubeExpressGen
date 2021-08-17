@@ -1,14 +1,19 @@
 const Cube = require("../models/Cube");
 
 module.exports = detailsRouter = function (req, res, next) {
-  const id = req.originalUrl.split("/")[2];
-
-  Cube.findById(id, function (err, cube) {
+  Cube.findById(req.params.id, function (err, cube) {
     if (err) return console.error(err);
   })
     .lean()
+    .populate("accessories")
+    .exec()
     .then((data) => {
-      console.log(data, id);
+      console.log(
+        "Cube detailPage data:",
+        data,
+        "This cube Id:",
+        req.params.id
+      );
       res.render("updatedDetailsPage", { cube: data });
     })
     .catch((err) => console.log(err));
