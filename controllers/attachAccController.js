@@ -32,30 +32,27 @@ const attachAcc2Cube = async function (req, res, next) {
   console.log("The selected accessory is:", selectedAcc);
   // console.log(req.params)
   try {
-    const accessory = await Accessory.find(
+    const accessory = await Accessory.findOne(
       { name: selectedAcc },
-      function (err, accessories) {
+      function (err, accessory) {
         if (err) return console.error(err);
-        return accessories;
+        return accessory;
       }
     ).lean();
 
+    console.log(accessory);
     // console.log("Selected accessory obj:", accessory);
 
-    const cube = await Cube.findById(req.params.id, function (err, cube) {
-      // cube.accessories.push(accessory[0]._id);
-      console.log("Accessory added", accessory[0]._id);
-      // console.log(cube);
-    }).updateOne({accessories: accessory[0]._id});
-    // Cube.findById(req.params.id).populate("accessories").exec((err, accessories) => {
-    //   console.log(accessories.name);
-    // });
+    const cube = await Cube.findByIdAndUpdate(
+      req.params.id,
+      { $addToSet: { accessories: accessory._id } },
+      function (err, cube) {
+        // cube.accessories.push(accessory[0]._id);
 
-    // .exec(function (err, cubes) {
-    //   if (err) return console.log(err);
-    //   console.log(cubes);
-    // });
-    // console.log("Current cube:", cube);
+        console.log("the acces", cube);
+      }
+    );
+    // console.log(req)
     // res.redirect("/");
   } catch (err) {
     console.log(err);
