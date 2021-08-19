@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const expHbs = require('express-handlebars');
+// const session = require("express-session");
 
 var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
