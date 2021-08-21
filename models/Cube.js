@@ -3,8 +3,7 @@ const Accessory = require('./Accessory');
 
   const cubeSchema = new mongoose.Schema({
     name: { 
-        type: String, 
-        min: 5,
+        type: String,
         required: true 
     },
     description: { 

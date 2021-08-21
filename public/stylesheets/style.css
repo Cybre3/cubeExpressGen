@@ -128,7 +128,8 @@ a {
 div.details {
     display: block;
     margin: auto;
-    width: 50%;
+    width: 55%;
+    text-align: center;
     background-color: #f3f3f2;
     padding: 1em;
 }

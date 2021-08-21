@@ -53,7 +53,7 @@ const attachAcc2Cube = async function (req, res, next) {
       }
     );
     // console.log(req)
-    // res.redirect("/");
+    res.redirect(`/details/${req.params.id}`);
   } catch (err) {
     console.log(err);
   }

@@ -46,8 +46,10 @@ const auth = async (req, res, next) => {
 
         authToken = token;
         console.log("This is the token", token);
-
-        res.cookie("token", authToken);
+        
+        
+        res.cookie("token", authToken)
+        res.cookie("username", userDbmatch.username);
 
         const decodedToken = jwt.verify(authToken, secretKey);
         console.log("The decoded token", decodedToken);

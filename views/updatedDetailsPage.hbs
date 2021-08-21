@@ -3,22 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Attach Accessory</title>
+    <title>Cubicle/{{cube.name}}</title>
     <link href="/stylesheets/style.css" type="text/css" rel="stylesheet">
-    <link rel='shortcut icon' type='image/x-icon' href='./images/favicon.png' />
+    <link rel='shortcut icon' type='image/x-icon' href='../images/favicon.png' />
 </head>
 
 <body>
     <div class="container">
+        {{#if token}}
         {{> headerLoggedIn}}
+        {{else}}
+        {{> headerGuest}}
+        {{/if}}
         <main>
-            {{> detailDiv cube}}
+            {{> detailDiv}}
             <h2>Accessories</h2>
             <div class="accessories">
+                {{#if cube.accessories}}
                 {{#each cube.accessories}}
                 {{> detailAccessoryDiv}}
                 {{/each}}
+                {{else}}
                 <h3 class="italic">This cube has no accessories yet...</h3>
+                {{/if}}
             </div>
         </main>
     </div>

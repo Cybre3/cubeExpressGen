@@ -28,7 +28,7 @@ const sendNewUser = async function (req, res, next) {
         console.log("New user was created", newUser);
     });
 
-    res.redirect("/register");
+    res.redirect("/");
 };
 
 module.exports = {
