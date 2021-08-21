@@ -10,7 +10,11 @@
 
 <body>
   <div class="container">
-    {{> header}}
+    {{#if token}}
+    {{> headerLoggedIn}}
+    {{else}}
+    {{> headerGuest}}
+    {{/if}}
     <main>
       <h1>About Cubicle</h1>
       <div class="about">

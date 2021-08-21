@@ -17,6 +17,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var editRouter = require('./routes/edit');
 var deleteRouter = require('./routes/delete');
+var logoutRouter = require('./routes/logout');
 // var _404Router = require('./routes/_404');
 
 var app = express();
@@ -47,6 +48,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/edit', editRouter);
 app.use('/delete', deleteRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
