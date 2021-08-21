@@ -22,7 +22,11 @@ const Accessory = require('./Accessory');
     accessories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Accessory'
-    }]
+    }],
+    creatorId: {
+        type: String,
+        required: true
+    }
 
   });
 

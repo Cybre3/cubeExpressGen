@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const expHbs = require('express-handlebars');
+// const session = require("express-session");
 
 var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
@@ -12,6 +13,11 @@ var createRouter = require('./routes/create');
 var detailsRouter = require('./routes/details');
 var createAccRouter = require('./routes/createAccessory');
 var attachAccRouter = require('./routes/attachAccessory');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
+var editRouter = require('./routes/edit');
+var deleteRouter = require('./routes/delete');
+var logoutRouter = require('./routes/logout');
 // var _404Router = require('./routes/_404');
 
 var app = express();
@@ -38,6 +44,11 @@ app.use('/create', createRouter);
 app.use('/details', detailsRouter);
 app.use('/create/accessory', createAccRouter);
 app.use('/attach/accessory', attachAccRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/edit', editRouter);
+app.use('/delete', deleteRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
