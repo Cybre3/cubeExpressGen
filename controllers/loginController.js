@@ -8,13 +8,11 @@ const getLoginForm = function (req, res, next) {
 
 const loginUser = async function (req, res, next) {
 
-    const validToken = req.cookies.token;
    
     console.log('login user function');
-    console.log(req.body)
+    console.log(req.body);
     // console.log('this is the atuhtoken', authToken);
-    console.log("This is the cookie", validToken);
-    
+    res.redirect("/");
     
 };
 

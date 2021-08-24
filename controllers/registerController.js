@@ -1,34 +1,52 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
+const handleErrors = (err) => {
+    console.log(err.message, err.code);
+    let errors = { username: "", password: "" };
+
+    // duplicate error code
+    if (err.code === 11000) {
+        errors.username = "That username is already registered";
+        return errors;
+    }
+
+    // validation errors
+    if (err.message.includes("User validation failed")) {
+        Object.values(err.errors).forEach(({ properties }) => {
+            errors[properties.path] = properties.message;
+        });
+    }
+
+    return errors;
+};
+
 const getRegisterForm = function (req, res, next) {
-    res.render("registerPage");
+    console.log("These are errors", req.session.errors);
+    const errors = req.session.errors;
+    res.render("registerPage", { errors: errors });
 };
 
 const sendNewUser = async function (req, res, next) {
-    let body = req.body;
-    console.log(body);
+    let { username, password } = req.body;
 
-    const salt = await bcrypt.genSalt();
-    const hash = await bcrypt.hash(body.password, salt);
-    // bcrypt.hash(password, 12).then(hash => {…
+    // if(body.repeatPassword !== body.password) {
+    //     return;
+    // }
 
-    // bcrypt.hash(password, saltRounds, function(err, hash) {
-    //   // Store hash in database here
-    // });
-    
-
-    const newUser = new User({
-        username: body.username,
-        password: hash,
-    });
-
-    newUser.save(async function (err, newUser) {
-        if (err) return;
-        console.log("New user was created", newUser);
-    });
-
-    res.redirect("/");
+    try {
+        const newUser = await User.create({ username, password });
+        // newUser.save();
+        // console.log("New user was created", newUser);
+        res.status(201).json(newUser);
+        res.redirect("/");
+    } catch (err) {
+        const errors = handleErrors(err);
+        // if (err) return;
+        req.session.errors = errors;
+        // res.status(400).json({ errors });
+        res.redirect("/register");
+    }
 };
 
 module.exports = {

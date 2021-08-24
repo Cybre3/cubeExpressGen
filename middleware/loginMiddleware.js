@@ -35,6 +35,11 @@ const auth = async (req, res, next) => {
 
         console.log(matchPassword); // true
 
+        if(!matchPassword){
+            res.redirect('/login');
+            return;
+        }
+        
         const payloads = {
             _id: userDbmatch._id,
             username: userDbmatch.username,
@@ -58,9 +63,8 @@ const auth = async (req, res, next) => {
     }
 
     console.log("this is auth token", authToken);
-
+    
     next();
-    res.redirect("/");
 };
 
 module.exports = { auth };
