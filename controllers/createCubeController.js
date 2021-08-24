@@ -8,9 +8,6 @@ const addCubeForm = function (req, res, next) {
 const createCube = async function (req, res, next) {
   let body = req.body;
   const username = req.cookies.username;
-  // console.log(req)
-  
-  // const decodedToken = jwt.verify(authToken, secretKey);
 
   const creator = await User.findOne({username: username}).lean();
 

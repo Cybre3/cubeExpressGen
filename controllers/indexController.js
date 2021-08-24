@@ -8,7 +8,8 @@ module.exports = indexRouter = function (req, res, next) {
     })
         .lean()
         .then((data) => {
-            console.log(data);
+            // console.log(data);
+            console.log("I am in the index controller", req.cookies);
             res.render("index", { cube: data, token: validToken });
         })
         .catch((err) => res.send(err));
